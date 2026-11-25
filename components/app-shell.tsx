@@ -64,12 +64,13 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
 }
 
 function SidebarFooter() {
-  const { resetDemo } = useStore()
+  const { resetDemo, error } = useStore()
   return (
     <div className="mt-auto flex flex-col gap-3 border-t pt-4">
       <div className="rounded-lg bg-accent p-3 text-xs text-accent-foreground">
         <p className="font-semibold">Demo workspace</p>
-        <p className="mt-0.5 text-muted-foreground">Data is saved locally in your browser.</p>
+        <p className="mt-0.5 text-muted-foreground">Data is stored in a shared cloud database.</p>
+        {error && <p className="mt-1 font-medium text-destructive">Sync problem: {error}</p>}
       </div>
       <button
         type="button"
